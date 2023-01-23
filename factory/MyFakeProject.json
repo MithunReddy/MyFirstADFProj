@@ -1,0 +1,9 @@
+{
+	"name": "MyFakeProject",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "28f4066f-91a2-44f8-8eb2-98167ac0c285",
+		"tenantId": "3b20f4a0-2cc9-4171-8b12-6848c1019db6"
+	}
+}

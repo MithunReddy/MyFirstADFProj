@@ -1,0 +1,110 @@
+{
+	"name": "CopyIndividualFileInLoop",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_myfakeproj_copy_few_files",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": "raw",
+				"fileSystem": "adf-fakeproj"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "STATE_UT_NAME",
+				"type": "String"
+			},
+			{
+				"name": "DISTRICT",
+				"type": "String"
+			},
+			{
+				"name": "JAN",
+				"type": "String"
+			},
+			{
+				"name": "FEB",
+				"type": "String"
+			},
+			{
+				"name": "MAR",
+				"type": "String"
+			},
+			{
+				"name": "APR",
+				"type": "String"
+			},
+			{
+				"name": "MAY",
+				"type": "String"
+			},
+			{
+				"name": "JUN",
+				"type": "String"
+			},
+			{
+				"name": "JUL",
+				"type": "String"
+			},
+			{
+				"name": "AUG",
+				"type": "String"
+			},
+			{
+				"name": "SEP",
+				"type": "String"
+			},
+			{
+				"name": "OCT",
+				"type": "String"
+			},
+			{
+				"name": "NOV",
+				"type": "String"
+			},
+			{
+				"name": "DEC",
+				"type": "String"
+			},
+			{
+				"name": "ANNUAL",
+				"type": "String"
+			},
+			{
+				"name": "Jan-Feb",
+				"type": "String"
+			},
+			{
+				"name": "Mar-May",
+				"type": "String"
+			},
+			{
+				"name": "Jun-Sep",
+				"type": "String"
+			},
+			{
+				"name": "Oct-Dec",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
