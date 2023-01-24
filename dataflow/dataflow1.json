@@ -1,0 +1,64 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SourceRawDataSetForCopy",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          name_of_city as string,",
+				"          state_code as string,",
+				"          state_name as string,",
+				"          dist_code as string,",
+				"          population_total as string,",
+				"          population_male as string,",
+				"          population_female as string,",
+				"          {0-6_population_total} as string,",
+				"          {0-6_population_male} as string,",
+				"          {0-6_population_female} as string,",
+				"          literates_total as string,",
+				"          literates_male as string,",
+				"          literates_female as string,",
+				"          sex_ratio as string,",
+				"          child_sex_ratio as string,",
+				"          effective_literacy_rate_total as string,",
+				"          effective_literacy_rate_male as string,",
+				"          effective_literacy_rate_female as string,",
+				"          location as string,",
+				"          total_graduates as string,",
+				"          male_graduates as string,",
+				"          female_graduates as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          name_of_city,",
+				"          state_code,",
+				"          state_name,",
+				"          dist_code,",
+				"          population_total,",
+				"          population_male,",
+				"          population_female,",
+				"          location",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
+			]
+		}
+	}
+}
