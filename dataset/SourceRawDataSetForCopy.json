@@ -1,0 +1,116 @@
+{
+	"name": "SourceRawDataSetForCopy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_myfakeproj_copy_few_files",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "YashTask"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "cities_r2.csv",
+				"folderPath": "raw",
+				"fileSystem": "taskbyyashwanth"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "name_of_city",
+				"type": "String"
+			},
+			{
+				"name": "state_code",
+				"type": "String"
+			},
+			{
+				"name": "state_name",
+				"type": "String"
+			},
+			{
+				"name": "dist_code",
+				"type": "String"
+			},
+			{
+				"name": "population_total",
+				"type": "String"
+			},
+			{
+				"name": "population_male",
+				"type": "String"
+			},
+			{
+				"name": "population_female",
+				"type": "String"
+			},
+			{
+				"name": "0-6_population_total",
+				"type": "String"
+			},
+			{
+				"name": "0-6_population_male",
+				"type": "String"
+			},
+			{
+				"name": "0-6_population_female",
+				"type": "String"
+			},
+			{
+				"name": "literates_total",
+				"type": "String"
+			},
+			{
+				"name": "literates_male",
+				"type": "String"
+			},
+			{
+				"name": "literates_female",
+				"type": "String"
+			},
+			{
+				"name": "sex_ratio",
+				"type": "String"
+			},
+			{
+				"name": "child_sex_ratio",
+				"type": "String"
+			},
+			{
+				"name": "effective_literacy_rate_total",
+				"type": "String"
+			},
+			{
+				"name": "effective_literacy_rate_male",
+				"type": "String"
+			},
+			{
+				"name": "effective_literacy_rate_female",
+				"type": "String"
+			},
+			{
+				"name": "location",
+				"type": "String"
+			},
+			{
+				"name": "total_graduates",
+				"type": "String"
+			},
+			{
+				"name": "male_graduates",
+				"type": "String"
+			},
+			{
+				"name": "female_graduates",
+				"type": "String"
+			}
+		]
+	}
+}
