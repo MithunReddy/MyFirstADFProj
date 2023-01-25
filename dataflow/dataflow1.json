@@ -18,7 +18,11 @@
 						"referenceName": "SinkDataSetForCopy",
 						"type": "DatasetReference"
 					},
-					"name": "SinkSave"
+					"name": "SinkSave",
+					"rejectedDataLinkedService": {
+						"referenceName": "ls_myfakeproj_copy_few_files",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -72,8 +76,6 @@
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> SinkSave"
 			]
 		}
