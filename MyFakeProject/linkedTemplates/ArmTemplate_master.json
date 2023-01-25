@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "MyFakeProject"
 		},
+		"LS_MyFakeProjDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LS_MyFakeProjDatabricks'"
+		},
 		"ls_myfakeproj_copy_few_files_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_myfakeproj_copy_few_files'"
@@ -41,6 +45,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LS_MyFakeProjDatabricks_accessToken": {
+						"value": "[parameters('LS_MyFakeProjDatabricks_accessToken')]"
 					},
 					"ls_myfakeproj_copy_few_files_accountKey": {
 						"value": "[parameters('ls_myfakeproj_copy_few_files_accountKey')]"

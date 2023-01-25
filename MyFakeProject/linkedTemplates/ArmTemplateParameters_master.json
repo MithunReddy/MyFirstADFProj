@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "MyFakeProject"
 		},
+		"LS_MyFakeProjDatabricks_accessToken": {
+			"value": ""
+		},
 		"ls_myfakeproj_copy_few_files_accountKey": {
 			"value": ""
 		},

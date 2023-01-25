@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "MyFakeProject"
 		},
+		"LS_MyFakeProjDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LS_MyFakeProjDatabricks'"
+		},
 		"ls_myfakeproj_copy_few_files_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_myfakeproj_copy_few_files'"
@@ -263,6 +267,33 @@
 							},
 							"traceLevel": "Fine"
 						}
+					},
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "Data flow1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/mithun.ade1@hotmail.com/YashTask/CleanData"
+						},
+						"linkedServiceName": {
+							"referenceName": "LS_MyFakeProjDatabricks",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"policy": {
@@ -275,7 +306,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_MyFakeProjDatabricks')]"
 			]
 		},
 		{
@@ -650,6 +682,28 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_MyFakeProjDatabricks')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-8938395096656663.3.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('LS_MyFakeProjDatabricks_accessToken')]"
+					},
+					"newClusterNodeType": "Standard_DS3_v2",
+					"newClusterNumOfWorker": "1",
+					"newClusterVersion": "10.4.x-scala2.12",
+					"newClusterInitScripts": [],
+					"clusterOption": "Fixed"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ls_myfakeproj_copy_few_files')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -742,7 +796,7 @@
 						"     skipDuplicateMapOutputs: true) ~> SelectMinimalColumns",
 						"SelectMinimalColumns sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
-						"     partitionFileNames:['processedfile'],",
+						"     partitionFileNames:['processedfile.csv'],",
 						"     umask: 0022,",
 						"     preCommands: [],",
 						"     postCommands: [],",
