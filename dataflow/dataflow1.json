@@ -9,7 +9,7 @@
 						"referenceName": "SourceRawDataSetForCopy",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "Source"
 				}
 			],
 			"sinks": [
@@ -18,12 +18,12 @@
 						"referenceName": "SinkDataSetForCopy",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "SinkSave"
 				}
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "SelectMinimalColumns"
 				}
 			],
 			"scriptLines": [
@@ -53,8 +53,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 select(mapColumn(",
+				"     ignoreNoFilesFound: false) ~> Source",
+				"Source select(mapColumn(",
 				"          name_of_city,",
 				"          state_code,",
 				"          state_name,",
@@ -65,14 +65,16 @@
 				"          location",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectMinimalColumns",
+				"SelectMinimalColumns sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['processedfile'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> SinkSave"
 			]
 		}
 	}
