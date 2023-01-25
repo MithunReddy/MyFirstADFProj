@@ -72,7 +72,7 @@
 				"     skipDuplicateMapOutputs: true) ~> SelectMinimalColumns",
 				"SelectMinimalColumns sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['processedfile'],",
+				"     partitionFileNames:['processedfile.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
