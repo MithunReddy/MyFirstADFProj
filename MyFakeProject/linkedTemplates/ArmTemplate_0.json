@@ -330,7 +330,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "cities_r2.csv",
+						"fileName": "cities_r2_open.csv",
 						"folderPath": "raw",
 						"fileSystem": "taskbyyashwanth"
 					},
