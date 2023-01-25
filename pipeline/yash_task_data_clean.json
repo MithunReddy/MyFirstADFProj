@@ -45,6 +45,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/mithun.ade1@hotmail.com/YashTask/CleanData"
+				},
 				"linkedServiceName": {
 					"referenceName": "LS_MyFakeProjDatabricks",
 					"type": "LinkedServiceReference"
